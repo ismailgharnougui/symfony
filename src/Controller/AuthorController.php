@@ -113,6 +113,7 @@ public function  Add (Request  $request)
         $em->remove($author);
         $em->flush();
 
+        
         return $this->redirectToRoute('app_Affiche');
     }
     #[Route('/AddStatistique', name: 'app_AddStatistique')]
