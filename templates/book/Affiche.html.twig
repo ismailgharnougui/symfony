@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>List Books</h1>
+<a href="{{ path('app_AddBook')}}">Add</a>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+
+        <th>Publication date</th>
+        <th>published</th>
+        <th>category</th>
+
+        <th>author</th>
+        <th>Actions</th>
+    </tr>
+
+
+    <tr>  {% for b in publishedBooks %} </tr>
+    <td>{{ b.title }}</td>
+    <td>{{ b.publicationDate | date('M-d-Y') }}</td>
+    <td> {{b.published }}</td>
+
+    <td> {{b.category }}</td>
+    <td>{{ b.author.username }}</td>
+    <td><a href="{{ path('app_editBook', {'ref': b.ref}) }}">edit</a>
+        <a href="{{ path('app_deleteBook', {'ref': b.ref}) }}">delete</a>
+        <a href="{{ path('app_detailBook', {'ref': b.ref}) }}">detail</a>
+
+
+
+    </td>
+
+
+    {% endfor %}
+
+    <p>Number of published books : {{ numPublishedBooks }}</p>
+    <p>Number of Unpublished books : {{ numUnPublishedBooks }}</p>
+
+</table>
+</body>
+</html>
